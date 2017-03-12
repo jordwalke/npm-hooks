@@ -55,27 +55,12 @@ function createScript(type, script, pathInto, cb) {
 }
 
 function writeScript(writeInto, script, cb) {
-
-	fs.exists(writeInto, function(exists) {
-
-		if(exists) {
-			script = ' && ' + script;
-
-			fs.appendFile(
-				writeInto,
-				script,
-				{ encoding: 'utf8', mode: '0755'},
-				cb
-			);
-		} else {
-			fs.writeFile(
-				writeInto,
-				script,
-				{ encoding: 'utf8', mode: '0755'},
-				cb
-			);
-		}
-	});
+	fs.writeFile(
+		writeInto,
+		script,
+		{ encoding: 'utf8', mode: '0755'},
+		cb
+	);
 }
 
 function createNPMHooksFolder(modulesPath, cb) {
